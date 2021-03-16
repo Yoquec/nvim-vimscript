@@ -5,6 +5,9 @@ source $HOME/.config/nvim/plug-config/coc.vim
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'itchyny/lightline.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
