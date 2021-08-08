@@ -1,4 +1,8 @@
 syntax enable
+
+" set leader key
+let g:mapleader = "\<Space>"
+
 set background=dark
 set termguicolors
 set hidden
@@ -22,6 +26,7 @@ set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=0                        " Always display the status line
 set number                              " Line numbers
+set relativenumber 											" Relative line numbers for jumps between lines.
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs
@@ -34,9 +39,9 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set foldmethod=indent
 "set autochdir                           " Your working directory will always
-let g:airline_theme = 'gruvbox_material'
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
-
+let g:airline_theme = 'minimalist'
+let g:lightline = {'colorscheme' : 'wombat'}
+"let g:onedark_style = 'darker'  " We need add the configs before colorscheme line
 "be the same as your working directory
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
