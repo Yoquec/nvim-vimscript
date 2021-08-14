@@ -8,9 +8,10 @@ nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
 
-" I hate escape more than anything else
-inoremap jk <Esc>
-inoremap kj <Esc>
+" " I hate escape more than anything else
+" That's why it's useful to remap it to Caps-Lock using xmodmap
+" inoremap jk <Esc>
+" inoremap kj <Esc>
 
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
@@ -46,3 +47,9 @@ nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 nnoremap <S-F10> :w<CR>
 
+"Nvim-R remaps
+vmap <Leader><CR> <Plug>RDSendSelection
+nmap <Leader><CR> <Plug>RDSendLine
+
+"Undotree remaps
+nnoremap <Leader>ut :UndotreeToggle<CR>

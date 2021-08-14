@@ -2,6 +2,8 @@ syntax enable
 
 " set leader key
 let g:mapleader = "\<Space>"
+"Leader key for Nvim-R
+let maplocalleader = ','
 
 set background=dark
 set termguicolors

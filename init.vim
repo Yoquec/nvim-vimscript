@@ -1,24 +1,45 @@
+"#####################################################
+"Load external config files
+"#####################################################
+"Source settings
 source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/keys/mappings.vim
+"Source completion configuration
 source $HOME/.config/nvim/plug-config/coc.vim
+"Source key mappings
+source $HOME/.config/nvim/keys/mappings.vim
 
+"#####################################################
+"PLUGINS
+"#####################################################
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
+"For the airline and lightline bars bars (fully esthetic)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'itchyny/lightline.vim'
-Plug 'jremmen/vim-ripgrep'
+
+"Vim integration with git.
 Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-utils/vim-man'
+
+"For multiline comments and increase of quality of life on commenting
+"(Use gcc, gc<numberOfLines><j/k> or gcap to comment an entire paragraph).
+Plug 'tpope/vim-commentary' 
+
+"For R development like in R studio
+Plug 'jalvesaq/Nvim-R'
+Plug 'chrisbra/csv.vim'
 Plug 'lyuts/vim-rtags'
+
+" Various colorschemes
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'morhetz/gruvbox'
 Plug 'srcery-colors/srcery-vim'
-"Plug 'git@github.com:kien/ctrlp.vim.git'
-"Plug 'git@github:Valloric/YouCompleteMe.git'
+
+"For undoing history
 Plug 'mbbill/undotree'
+
+"For code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "For "vimfiler" pluggin:
@@ -31,6 +52,19 @@ else
 endif
 
 call plug#end()
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-colorscheme srcery
-nnoremap <C-s> :w<CR>
+"#####################################################
+"Unused Plugins (maybe they are worth your time.)
+"#####################################################
+
+""View manpages directly from vim
+"Plug 'vim-utils/vim-man'
+
+""Use RipGrep directly from vim
+"Plug 'jremmen/vim-ripgrep'
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"Set your favourite colorscheme
+colorscheme 256_noir
