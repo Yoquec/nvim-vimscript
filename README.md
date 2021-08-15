@@ -4,7 +4,7 @@ The aim of this repo is to be able to take my config files wherever I want and m
 
 <hr>
 
-## Instalation
+## Installation
 It is important to note that <mark>only works on Linux systems or wsl</mark> and on <mark>neovim</mark> because of the folder structure.
 
 ### Getting the config files and folders.
