@@ -5,10 +5,10 @@ The aim of this repo is to be able to take my config files wherever I want and m
 <hr>
 
 ## Installation
-It is important to note that <mark>only works on Linux systems or wsl</mark> and on <mark>neovim</mark> because of the folder structure.
+It is important to note that the config <mark>only works on Linux systems or wsl</mark> and on <mark>neovim</mark> because of the folder structure.
 
 ### Getting the config files and folders.
-In the `$HOME/.config` directory, you just have to clone the repo as 'git clone https://github.com/Yoquec/nvim.git` to get all the config files.
+In the `$HOME/.config` directory, you just have to clone the repo as `git clone https://github.com/Yoquec/nvim.git` to get all the config files.
 
 ### Installing neovim
 To install neovim, use your built-in package manager. For example, in debian based systems (Ubuntu, mint, PopOs, etc) you can just run `sudo apt install neovim`.
