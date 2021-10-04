@@ -42,6 +42,9 @@ Plug 'mbbill/undotree'
 "For code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" For coc-settings and json linting
+Plug 'kevinoid/vim-jsonc'
+
 "For "vimfiler" pluggin:
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -67,4 +70,4 @@ call plug#end()
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "Set your favourite colorscheme
-colorscheme 256_noir
+colorscheme tender
