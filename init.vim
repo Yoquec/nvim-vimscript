@@ -71,6 +71,8 @@ call plug#end()
 Plug 'jremmen/vim-ripgrep'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"Start with NERDTree opened
+autocmd VimEnter * NERDTree | wincmd p
 
 "Set your favourite colorscheme
 colorscheme tender

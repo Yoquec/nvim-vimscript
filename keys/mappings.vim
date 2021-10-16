@@ -1,5 +1,3 @@
-" Better nav for omnicomplete
-inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
 
 " Use alt + hjkl to resize windows
@@ -53,3 +51,9 @@ nmap <Leader><CR> <Plug>RDSendLine
 
 "Undotree remaps
 nnoremap <Leader>ut :UndotreeToggle<CR>
+
+"NERDTree remaps
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader><C-n> :NERDTree<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader><C-f> :NERDTreeFind<CR>
