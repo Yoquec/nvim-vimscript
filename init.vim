@@ -48,6 +48,9 @@ Plug 'preservim/nerdtree'
 " For coc-settings and json linting
 Plug 'kevinoid/vim-jsonc'
 
+""Use RipGrep directly from vim
+Plug 'jremmen/vim-ripgrep'
+
 "For "vimfiler" pluggin:
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -66,10 +69,6 @@ call plug#end()
 
 ""View manpages directly from vim
 "Plug 'vim-utils/vim-man'
-
-""Use RipGrep directly from vim
-Plug 'jremmen/vim-ripgrep'
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "Start with NERDTree opened
 autocmd VimEnter * NERDTree | wincmd p
