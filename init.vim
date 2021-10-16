@@ -42,6 +42,9 @@ Plug 'mbbill/undotree'
 "For code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+"Having a file tree
+Plug 'preservim/nerdtree'
+
 "For "vimfiler" pluggin:
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -62,9 +65,9 @@ call plug#end()
 "Plug 'vim-utils/vim-man'
 
 ""Use RipGrep directly from vim
-"Plug 'jremmen/vim-ripgrep'
+Plug 'jremmen/vim-ripgrep'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "Set your favourite colorscheme
-colorscheme 256_noir
+colorscheme tender
