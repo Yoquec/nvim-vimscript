@@ -42,13 +42,11 @@ Plug 'mbbill/undotree'
 "For code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-<<<<<<< HEAD
 "Having a file tree
 Plug 'preservim/nerdtree'
-=======
+
 " For coc-settings and json linting
 Plug 'kevinoid/vim-jsonc'
->>>>>>> af5ddb4da74e9ec0a6e0fb7fc976ed3b35155f37
 
 "For "vimfiler" pluggin:
 if has('nvim')
