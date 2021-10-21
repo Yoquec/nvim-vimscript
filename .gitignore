@@ -1,3 +1,5 @@
 .netrwhist
 ./plugged/*
 ./site
+plugged/
+plugged*
