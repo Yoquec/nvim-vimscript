@@ -41,8 +41,8 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set foldmethod=indent
 "set autochdir                           " Your working directory will always
-let g:airline_theme = 'minimalist'
-let g:lightline = {'colorscheme' : 'wombat'}
+" let g:airline_theme = 'nord'
+let g:lightline = {'colorscheme' : 'nord'}
 "let g:onedark_style = 'darker'  " We need add the configs before colorscheme line
 "be the same as your working directory
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC

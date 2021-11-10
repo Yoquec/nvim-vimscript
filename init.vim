@@ -5,6 +5,8 @@
 source $HOME/.config/nvim/general/settings.vim
 "Source completion configuration
 source $HOME/.config/nvim/plug-config/coc.vim
+"Source R linting config
+source $HOME/.config/nvim/plug-config/lintr.vim
 "Source key mappings
 source $HOME/.config/nvim/keys/mappings.vim
 
@@ -35,6 +37,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'morhetz/gruvbox'
 Plug 'srcery-colors/srcery-vim'
+Plug 'arcticicestudio/nord-vim'
 
 "For undoing history
 Plug 'mbbill/undotree'
@@ -50,6 +53,9 @@ Plug 'kevinoid/vim-jsonc'
 
 ""Use RipGrep directly from vim
 Plug 'jremmen/vim-ripgrep'
+
+"CtrlP fuzzy file opener
+Plug 'ctrlpvim/ctrlp.vim'
 
 "For "vimfiler" pluggin:
 if has('nvim')
@@ -74,4 +80,6 @@ call plug#end()
 autocmd VimEnter * NERDTree | wincmd p
 
 "Set your favourite colorscheme
-colorscheme tender
+colorscheme nord
+
+
