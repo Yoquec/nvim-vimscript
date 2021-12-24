@@ -1,5 +1,8 @@
 inoremap <expr> <c-k> ("\<C-p>")
 
+" Closing buffers
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+
 " Use alt + hjkl to resize windows
 nnoremap <M-j>    :resize -2<CR>
 nnoremap <M-k>    :resize +2<CR>
@@ -57,3 +60,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader><C-n> :NERDTree<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader><C-f> :NERDTreeFind<CR>
+
+" Add mapping for Goyo
+nnoremap <Leader>gy :Goyo<CR>

@@ -26,26 +26,70 @@ set smarttab                            " Makes tabbing smarter will realize you
 "set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set laststatus=0                        " Always display the status line
+set laststatus=2                        " Always display the status line
+set statusline=%t 
 set number                              " Line numbers
 set relativenumber 											" Relative line numbers for jumps between lines.
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
-"set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set showtabline=0                       " Always show tabs
+" set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-set foldmethod=indent
+set foldmethod=marker
 "set autochdir                           " Your working directory will always
+
+
+
+" Set the entire colorscheme to be nord
 " let g:airline_theme = 'nord'
-let g:lightline = {'colorscheme' : 'nord'}
-"let g:onedark_style = 'darker'  " We need add the configs before colorscheme line
-"be the same as your working directory
+let g:lightline = {
+      \ 'colorscheme': 'deus',
+      \ }
+
+
+" ~~~~~~~~~~~~~~~~~~~~
+" GOYO
+" ~~~~~~~~~~~~~~~~~~~~
+" Enable limelight automatically
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+
+" ~~~~~~~~~~~~~~~~~~~~
+" TMUX
+" ~~~~~~~~~~~~~~~~~~~~
+"set tmux cursor to work properly
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+endif
+
+" set term=screen-256color
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""
+" let g:lightline#bufferline#auto_hide = 2000
+""""""""""""""""""""""""""""""""""""""""""""
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
-"you can't stop me!!
+"you can't stop me!! Yoinked line of code
 cmap w!! w !sudo tee %
