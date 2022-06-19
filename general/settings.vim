@@ -14,7 +14,7 @@ set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
 set ruler              			            " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
-set iskeyword+=-                      	" treat dash separated words as a word text object"
+set iskeyword+=-                     	" treat dash separated words as a word text object"
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
@@ -41,16 +41,21 @@ set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set foldmethod=marker
+let g:Hexokinase_highlighters = ['backgroundfull']
 "set autochdir                           " Your working directory will always
+"
 
 
 
 " Set the entire colorscheme to be nord
 " let g:airline_theme = 'nord'
-let g:lightline = {
-      \ 'colorscheme': 'deus',
-      \ }
-
+" \ 'colorscheme': 'one',
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
+"
+" ~~~~~~~~~~~~~~~~~~~~
+" R MARKDOWN
+" ~~~~~~~~~~~~~~~~~~~~
+autocmd Filetype rmd map <Leader>rm :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
 
 " ~~~~~~~~~~~~~~~~~~~~
 " GOYO

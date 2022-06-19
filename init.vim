@@ -37,10 +37,14 @@ Plug 'lyuts/vim-rtags'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 
 " Various colorschemes
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
-Plug 'joshdick/onedark.vim' 
-Plug 'sainnhe/everforest'
+Plug 'sainnhe/gruvbox-material'
+  " Plug 'olimorris/onedarkpro.nvim'
+" Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+" Plug 'joshdick/onedark.vim' 
+" Plug 'chriskempson/base16-vim'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'sainnhe/everforest'
 " Plug 'sainnhe/sonokai' 
 " Plug 'morhetz/gruvbox'
 " Plug 'srcery-colors/srcery-vim'
@@ -55,6 +59,7 @@ Plug 'mbbill/undotree'
 
 " For code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 
 " Having a file tree
 Plug 'preservim/nerdtree'
@@ -66,10 +71,26 @@ Plug 'kevinoid/vim-jsonc'
 Plug 'jremmen/vim-ripgrep'
 
 " CtrlP fuzzy file opener
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim' "Replaced by telescope"
+
+"Vim telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+" For putting parenthesis and brackets around words
+Plug 'tpope/vim-surround'
 
 " Easymotion for vim
 Plug 'easymotion/vim-easymotion'
+
+" Color preview
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
+"Prettier plugin
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+" FireNvim for using nvim in firefox and google chrome
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call plug#end()
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +103,11 @@ call plug#end()
 "Plug 'vim-utils/vim-man'
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "Start with NERDTree opened
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
+
 
 "Set your favourite colorscheme
-colorscheme onedark
+let g:gruvbox_material_background = "hard"
+let g:gruvbox_material_foreground = "mix"
+colorscheme gruvbox-material
+" source $HOME/.config/nvim/general/transparent.vim

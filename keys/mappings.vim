@@ -1,7 +1,16 @@
+"Telescope bindings
+" Find files using Telescope command-line sugar.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 inoremap <expr> <c-k> ("\<C-p>")
 
-" Closing buffers
+" Closing buffers without closing the windows
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" Applying prettier formattings
+nnoremap <leader>p :Prettier<CR>
 
 " Use alt + hjkl to resize windows
 nnoremap <M-j>    :resize -2<CR>
@@ -63,3 +72,13 @@ nnoremap <leader><C-f> :NERDTreeFind<CR>
 
 " Add mapping for Goyo
 nnoremap <Leader>gy :Goyo<CR>
+
+" neovim terminal can exit to normal mode with <esc> now
+tnoremap <esc> <c-\><c-n>
+
+" delete text without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Run last command
+nnoremap <leader>r :<UP><CR>
