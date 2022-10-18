@@ -1,3 +1,26 @@
+"New coc-update trigger completion with tab
+inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ?
+	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ CheckBackSpace() ? "\<TAB>" :
+	\ coc#refresh()
+
+function! CheckBackSpace() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
+"Tabs settings
+nnoremap <C-m>t :tabnew<CR>
+nnoremap <C-m>c :tabc<CR>
+nnoremap <C-m>o :tabl<CR>
+nnoremap <C-m>l :tabn<CR>
+nnoremap <C-m>h :tabp<CR>
+
 "Telescope bindings
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope find_files<cr>
@@ -39,7 +62,7 @@ nnoremap <C-Q> :wq!<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
 " <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Better tabbing
 vnoremap < <gv

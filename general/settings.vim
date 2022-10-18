@@ -1,11 +1,28 @@
+" ~~~~~~~~~~~~~~~~~~~~
+" OPTIONS CONFIG
+" ~~~~~~~~~~~~~~~~~~~~
 syntax enable
+" statusline
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ '' : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'Replace ',
+       \ 'r'  : 'Replace ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \ 't'  : 'Terminal ',
+       \ 's'  : 'Select ',
+       \ '!'  : 'Shell '
+       \}
 
 " set leader key
 let g:mapleader = "\<Space>"
 "Leader key for Nvim-R
 let maplocalleader = ','
 
-set background=dark
 set termguicolors
 set hidden
 set nowrap                              " Display long lines as just one line
@@ -26,43 +43,61 @@ set smarttab                            " Makes tabbing smarter will realize you
 "set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set laststatus=2                        " Always display the status line
-set statusline=%t 
+set laststatus=1                        " Always display the status line
+" set statusline=%t 
+set statusline=%{toupper(g:currentmode[mode()])}%{toupper(&spelllang)}\ %{b:gitbranch}%<%F%h%m%r%=%-5.(%l,%c%V%)\ %y
 set number                              " Line numbers
 set relativenumber 											" Relative line numbers for jumps between lines.
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
-set showtabline=0                       " Always show tabs
-" set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set showtabline=1                       " Show tabs if there are several opened
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
-set foldmethod=marker
+" set foldmethod=marker
+set foldmethod=indent
+set foldlevel=5
 let g:Hexokinase_highlighters = ['backgroundfull']
 "set autochdir                           " Your working directory will always
-"
+let g:lightline = {'colorscheme' : 'gruvbox'}
 
 
+" ~~~~~~~~~~~~~~~~~~~~
+" Toggle status bar
+" ~~~~~~~~~~~~~~~~~~~~
+function! ToggleBar()
+	if &laststatus < 2
+		set laststatus=2
+	else
+		set laststatus=0
+	endif
+endfunction
 
-" Set the entire colorscheme to be nord
-" let g:airline_theme = 'nord'
-" \ 'colorscheme': 'one',
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
-"
+noremap <Leader>b :execute ToggleBar()<Enter>
+
 " ~~~~~~~~~~~~~~~~~~~~
 " R MARKDOWN
 " ~~~~~~~~~~~~~~~~~~~~
 autocmd Filetype rmd map <Leader>rm :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd :"Goyo"<Enter>
+"
+" ~~~~~~~~~~~~~~~~~~~~
+" MARKDOWN
+" ~~~~~~~~~~~~~~~~~~~~
+autocmd Filetype markdown map <Leader>ms :!slides<space>%<enter>
 
 " ~~~~~~~~~~~~~~~~~~~~
 " GOYO
 " ~~~~~~~~~~~~~~~~~~~~
 " Enable limelight automatically
 autocmd! User GoyoEnter Limelight
+autocmd! User GoyoEnter set wrap
 autocmd! User GoyoLeave Limelight!
+autocmd! User GoyoLeave set nowrap
 
 
 " ~~~~~~~~~~~~~~~~~~~~
@@ -91,9 +126,37 @@ if (empty($TMUX))
   endif
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""
-" let g:lightline#bufferline#auto_hide = 2000
-""""""""""""""""""""""""""""""""""""""""""""
+
+
+" ~~~~~~~~~~~~~~~~~~~~
+" Neovide (GUI)
+" ~~~~~~~~~~~~~~~~~~~~
+" Neovide options
+if exists("g:neovide")
+  let g:gui_font_size = 12
+  " silent! execute('set guifont=JetBrainsMono\ Nerd\ Font:h'.g:gui_font_size)
+  silent! execute('set guifont=ProFontIIx\ NF:h'.g:gui_font_size)
+  " silent! execute('set guifont=Comic\ Mono:h'.g:gui_font_size)
+  " silent! execute('set guifont=SpaceMono\ Nerd\ Font:h'.g:gui_font_size)
+  function! ResizeFont(delta)
+    let g:gui_font_size = g:gui_font_size + a:delta
+    execute('set guifont=JetBrainsMono\ Nerd\ Font:h'.g:gui_font_size)
+	endfunction
+  noremap <expr><D-=> ResizeFont(1)
+  noremap <expr><D--> ResizeFont(-1)
+endif
+
+" ~~~~~~~~~~~~~~~~~~~~
+" Firenvim extension
+" ~~~~~~~~~~~~~~~~~~~~
+function! OnUIEnter(event) abort
+  if 'Firenvim' ==# get(get(nvim_get_chan_info(a:event.chan), 'client', {}), 'name', '')
+    execute "Goyo"
+  endif
+endfunction
+autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+
+
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 "you can't stop me!! Yoinked line of code

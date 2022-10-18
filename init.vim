@@ -1,5 +1,5 @@
 "#####################################################
-"Load external config files
+"centerLoad external config files
 "#####################################################
 "Source settings
 source $HOME/.config/nvim/general/settings.vim
@@ -37,8 +37,9 @@ Plug 'lyuts/vim-rtags'
 Plug 'karoliskoncevicius/vim-sendtowindow'
 
 " Various colorschemes
-Plug 'sainnhe/gruvbox-material'
-  " Plug 'olimorris/onedarkpro.nvim'
+Plug 'gruvbox-community/gruvbox'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'olimorris/onedarkpro.nvim'
 " Plug 'rafi/awesome-vim-colorschemes'
 " Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 " Plug 'joshdick/onedark.vim' 
@@ -92,7 +93,14 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 " FireNvim for using nvim in firefox and google chrome
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
+" treesitter
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Icons on vim
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "#####################################################
@@ -106,8 +114,20 @@ call plug#end()
 " autocmd VimEnter * NERDTree | wincmd p
 
 
+
 "Set your favourite colorscheme
-let g:gruvbox_material_background = "hard"
-let g:gruvbox_material_foreground = "mix"
-colorscheme gruvbox-material
-" source $HOME/.config/nvim/general/transparent.vim
+" let g:gruvbox_material_background = "hard"
+" let g:gruvbox_material_foreground = "mix"
+
+" colorscheme gruvbox-material
+
+"Extra
+set background=dark
+set termguicolors "True colors term support
+let g:gruvbox_italic='1'
+let g:gruvbox_invert_selection='0'
+let g:gruvbox_termcolors='256'
+let g:AutoPairsFlyMode=0
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_sign_column="bg0"
+ colorscheme gruvbox
