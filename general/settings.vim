@@ -37,8 +37,8 @@ set splitbelow                          " Horizontal splits will automatically b
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set tabstop=4                           " Insert 2 spaces for a tab
+set shiftwidth=4                        " Change the number of space characters inserted for indentation
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 "set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
@@ -133,14 +133,14 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~
 " Neovide options
 if exists("g:neovide")
-  let g:gui_font_size = 12
+  let g:gui_font_size = 13
   " silent! execute('set guifont=JetBrainsMono\ Nerd\ Font:h'.g:gui_font_size)
-  silent! execute('set guifont=ProFontIIx\ NF:h'.g:gui_font_size)
+  silent! execute('set guifont=Iosevka:h'.g:gui_font_size)
   " silent! execute('set guifont=Comic\ Mono:h'.g:gui_font_size)
   " silent! execute('set guifont=SpaceMono\ Nerd\ Font:h'.g:gui_font_size)
   function! ResizeFont(delta)
     let g:gui_font_size = g:gui_font_size + a:delta
-    execute('set guifont=JetBrainsMono\ Nerd\ Font:h'.g:gui_font_size)
+    execute('set guifont=Iosevka:h'.g:gui_font_size)
 	endfunction
   noremap <expr><D-=> ResizeFont(1)
   noremap <expr><D--> ResizeFont(-1)
