@@ -29,6 +29,7 @@ set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
+set scrolloff=8
 set ruler              			            " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
 set iskeyword+=-                     	" treat dash separated words as a word text object"
@@ -60,11 +61,12 @@ set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 " set foldmethod=marker
 set foldmethod=indent
-set foldlevel=5
+set foldlevel=999
 let g:Hexokinase_highlighters = ['backgroundfull']
 "set autochdir                           " Your working directory will always
 let g:lightline = {'colorscheme' : 'gruvbox'}
-
+" set icons in ctrl-p
+let g:webdevicons_enable_ctrlp = 1
 
 " ~~~~~~~~~~~~~~~~~~~~
 " Toggle status bar
@@ -90,14 +92,19 @@ autocmd Filetype rmd :"Goyo"<Enter>
 " ~~~~~~~~~~~~~~~~~~~~
 autocmd Filetype markdown map <Leader>ms :!slides<space>%<enter>
 
+
+" ~~~~~~~~~~~~~~~~~~~~
+" C
+" ~~~~~~~~~~~~~~~~~~~~
+autocmd Filetype c map <Leader>C :!compile_run<space>%<enter>
+
 " ~~~~~~~~~~~~~~~~~~~~
 " GOYO
 " ~~~~~~~~~~~~~~~~~~~~
 " Enable limelight automatically
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoEnter set wrap
-autocmd! User GoyoLeave Limelight!
-autocmd! User GoyoLeave set nowrap
+autocmd! User GoyoEnter :exe "lua require('lualine').hide()" | exe "set wrap" | exe "Limelight 0.4"
+
+autocmd! User GoyoLeave :exe "lua require('lualine').hide({unhide=true})" | exe "set nowrap" | exe "Limelight!"
 
 
 " ~~~~~~~~~~~~~~~~~~~~
@@ -133,14 +140,14 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~
 " Neovide options
 if exists("g:neovide")
-  let g:gui_font_size = 13
+  let g:gui_font_size = 11
   " silent! execute('set guifont=JetBrainsMono\ Nerd\ Font:h'.g:gui_font_size)
-  silent! execute('set guifont=Iosevka:h'.g:gui_font_size)
+  silent! execute('set guifont=ProFontIIx\ NF:h'.g:gui_font_size)
   " silent! execute('set guifont=Comic\ Mono:h'.g:gui_font_size)
   " silent! execute('set guifont=SpaceMono\ Nerd\ Font:h'.g:gui_font_size)
   function! ResizeFont(delta)
     let g:gui_font_size = g:gui_font_size + a:delta
-    execute('set guifont=Iosevka:h'.g:gui_font_size)
+    execute('set guifont=ProFontIIx\ NF:h'.g:gui_font_size)
 	endfunction
   noremap <expr><D-=> ResizeFont(1)
   noremap <expr><D--> ResizeFont(-1)

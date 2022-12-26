@@ -13,22 +13,27 @@ source $HOME/.config/nvim/keys/mappings.vim
 "#####################################################
 call plug#begin('~/.config/nvim/plugged')
 
-"Set the lualine
-Plug 'nvim-lualine/lualine.nvim'
+"For the airline and lightline bars bars (fully esthetic)
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Can remove lightline because "nord" does not work with airline?
+" So we kinda need both.
+Plug 'itchyny/lightline.vim'
+" Plug 'mengelbrecht/lightline-bufferline'
+
+"Vim integration with git.
+" Plug 'tpope/vim-fugitive'
 
 "For multiline comments and increase of quality of life on commenting
 "(Use gcc, gc<numberOfLines><j/k> or gcap to comment an entire paragraph).
 Plug 'tpope/vim-commentary' 
-
-" Vim which-key
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 " For js development
 Plug 'pangloss/vim-javascript'
 
 "For R development like in R studio
 Plug 'jalvesaq/Nvim-R'
-" Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 Plug 'lyuts/vim-rtags'
 
 " For sending input to terminal buffers like in spyder
@@ -37,7 +42,17 @@ Plug 'karoliskoncevicius/vim-sendtowindow'
 " Various colorschemes
 Plug 'gruvbox-community/gruvbox'
 " Plug 'sainnhe/gruvbox-material'
+" Plug 'olimorris/onedarkpro.nvim'
 " Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+" Plug 'joshdick/onedark.vim' 
+" Plug 'chriskempson/base16-vim'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'sainnhe/everforest'
+" Plug 'sainnhe/sonokai' 
+" Plug 'morhetz/gruvbox'
+" Plug 'srcery-colors/srcery-vim'
+" Plug 'arcticicestudio/nord-vim'
 
 " Goyo and distraction free writting
 Plug 'junegunn/goyo.vim'
@@ -57,17 +72,17 @@ Plug 'preservim/nerdtree'
 Plug 'kevinoid/vim-jsonc'
 
 " Use RipGrep directly from vim
-" Plug 'jremmen/vim-ripgrep' "Replaced by telescope
+Plug 'jremmen/vim-ripgrep'
+
+" CtrlP fuzzy file opener
+" Plug 'ctrlpvim/ctrlp.vim' "Replaced by telescope"
 
 "Vim telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-symbols.nvim'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " For putting parenthesis and brackets around words
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 
 " Easymotion for vim
 Plug 'easymotion/vim-easymotion'
@@ -81,13 +96,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 " FireNvim for using nvim in firefox and google chrome
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
-" Vim dashboard
-Plug 'glepnir/dashboard-nvim'
-
 " treesitter
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Devicons for telescope
-Plug 'nvim-tree/nvim-web-devicons'
 
 " Icons on vim
 Plug 'ryanoasis/vim-devicons'
@@ -113,18 +123,9 @@ call plug#end()
 " let g:gruvbox_material_foreground = "mix"
 
 " colorscheme gruvbox-material
-" load lualine
-lua require("lualine").setup()
-
-" Dashboard settings
-lua require("dashboard_config")
-
-" Telescope file finder
-lua require("telescope").load_extension "file_browser"
-
 
 "Extra
-set background=dark
+set background=light
 set termguicolors "True colors term support
 let g:gruvbox_italic='1'
 let g:gruvbox_invert_selection='0'
@@ -133,10 +134,4 @@ let g:gruvbox_cursorline="bg0"
 let g:AutoPairsFlyMode=0
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_sign_column="bg0"
-colorscheme gruvbox
-
-" go all the way down
-resize +4
-" set showmode and no bar at the beggining
-set showmode
-set laststatus=0
+ colorscheme gruvbox

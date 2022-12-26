@@ -1,3 +1,7 @@
+" New coc update broke Enter completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>""
+
 "New coc-update trigger completion with tab
 inoremap <silent><expr> <TAB>
 	\ coc#pum#visible() ? coc#_select_confirm() :
@@ -14,19 +18,33 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 
+" Auto bold face and auto code
+" inoremap <C-b> :exe "normal ysiw*"<CR>
+" inoremap <C-c> :exe "normal ysiw`"<CR>
+nnoremap <C-b> :exe "normal ysiw*"<CR>
+nnoremap <C-c> :exe "normal ysiw`"<CR>
+" vnoremap <C-b> :exe "normal gv"."call feedkeys('S*')"<CR>
+" vnoremap <C-c> :exe "call feedkeys('S`')"<CR>
+
+" set up which-key
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+
+
 "Tabs settings
-nnoremap <C-m>t :tabnew<CR>
-nnoremap <C-m>c :tabc<CR>
-nnoremap <C-m>o :tabl<CR>
-nnoremap <C-m>l :tabn<CR>
-nnoremap <C-m>h :tabp<CR>
+nnoremap <leader>mt :tabnew<CR>
+nnoremap <leader>mc :tabc<CR>
+nnoremap <leader>mo :tabl<CR>
+nnoremap <leader>ml :tabn<CR>
+nnoremap <leader>mh :tabp<CR>
 
 "Telescope bindings
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>Telescope file_browser<cr>
 inoremap <expr> <c-k> ("\<C-p>")
 
 " Closing buffers without closing the windows
@@ -60,7 +78,7 @@ nnoremap <C-s> :w<CR>
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
 " Use control-c instead of escape
-nnoremap <C-c> <Esc>
+" nnoremap <C-c> <Esc>
 " <TAB>: completion.
 " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
